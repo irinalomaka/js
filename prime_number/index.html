@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>Prime Numners</title>
+  </head>
+<body>
+    <div class="container">
+      <div class="header clearfix">
+        <h3 class="text-muted">First 100 Prime Numbers</h3>
+      </div>
+      <div id="info" class="alert alert-info"></div>
+    </div>
+
+    <script type="text/javascript">
+
+      var primeList = [];
+      var i = 0;
+        while(primeList.length < 100) {
+          if (isPrimeNumber(i)) {
+            primeList.push(i);
+          }
+
+          i++;
+        }
+
+        $("#info").append("<p>================ BEGIN ============</p>");
+        primeList.forEach(function(item, i, primeList){
+           $("#info").append(item);
+           if (i != 0 && i % 10 == 0) {
+             $("#info").append("<p></p>");
+           }
+
+           if (i != primeList.length - 1) {
+              $("#info").append("  ");
+           }
+        })
+       
+      $("#info").append("<p>================ END ============</p>");
+
+      
+      function isPrimeNumber(number) {
+        if(number < 2) {
+          return false; 
+        }
+
+        for (var i = 2; i < number; i++) {
+          if (number % i === 0) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>
